@@ -8,9 +8,9 @@ from .models import Question
 
 def create_question(question_text, days):
     """
-    Create a question with the given `question_text` and published the
-    given number of `days` offset to now (negative for questions published
-    in the past, positive for questions that have yet to be published).
+    Cree una pregunta con el `question_text` dado y publique el
+    número dado de 'días' compensados hasta ahora (negativo para preguntas publicadas
+    en el pasado, positivo para preguntas que aún no se han publicado).
     """
     time = timezone.now() + datetime.timedelta(days=days)
     return Question.objects.create(question_text=question_text, pub_date=time)
@@ -19,8 +19,8 @@ class QuestionModelTests(TestCase):
 
     def test_was_published_recently_with_future_question(self):
         """
-        was_published_recently() returns False for questions whose pub_date
-        is in the future.
+        was_published_recently() devuelve False para preguntas cuya pub_date
+        está en el futuro.
         """
         time = timezone.now() + datetime.timedelta(days=30)
         future_question = Question(pub_date=time)
@@ -28,8 +28,8 @@ class QuestionModelTests(TestCase):
     
     def test_was_published_recently_with_old_question(self):
         """
-        was_published_recently() returns False for questions whose pub_date
-        is older than 1 day.
+        was_published_recently() devuelve False para preguntas cuya pub_date
+        tiene más de 1 día.
         """
         time = timezone.now() - datetime.timedelta(days=1, seconds=1)
         old_question = Question(pub_date=time)
@@ -37,8 +37,8 @@ class QuestionModelTests(TestCase):
 
     def test_was_published_recently_with_recent_question(self):
         """
-        was_published_recently() returns True for questions whose pub_date
-        is within the last day.
+        was_published_recently() devuelve True para las preguntas cuya pub_date
+        está dentro del último día.
         """
         time = timezone.now() - datetime.timedelta(hours=23, minutes=59, seconds=59)
         recent_question = Question(pub_date=time)
@@ -46,7 +46,7 @@ class QuestionModelTests(TestCase):
     
     def test_no_questions(self):
         """
-        If no questions exist, an appropriate message is displayed.
+        Si no existen preguntas, se muestra un mensaje apropiado.
         """
         response = self.client.get(reverse('polls:index'))
         self.assertEqual(response.status_code, 200)
@@ -55,8 +55,8 @@ class QuestionModelTests(TestCase):
 
     def test_future_question(self):
         """
-        The detail view of a question with a pub_date in the future
-        returns a 404 not found.
+        La vista detallada de una pregunta con fecha de publicación en el futuro
+        devuelve un 404 no encontrado.
         """
         future_question = create_question(question_text='Future question.', days=5)
         url = reverse('polls:detail', args=(future_question.id,))
@@ -65,8 +65,8 @@ class QuestionModelTests(TestCase):
 
     def test_past_question(self):
         """
-        The detail view of a question with a pub_date in the past
-        displays the question's text.
+        La vista detallada de una pregunta con fecha de publicación en el pasado
+        muestra el texto de la pregunta.
         """
         past_question = create_question(question_text='Past Question.', days=-5)
         url = reverse('polls:detail', args=(past_question.id,))
@@ -75,8 +75,8 @@ class QuestionModelTests(TestCase):
 
     def test_future_question_and_past_question(self):
         """
-        Even if both past and future questions exist, only past questions
-        are displayed.
+        Incluso si existen preguntas pasadas y futuras, sólo las preguntas pasadas
+        son mostrados.
         """
         question = create_question(question_text="Past question.", days=-30)
         create_question(question_text="Future question.", days=30)
@@ -88,7 +88,7 @@ class QuestionModelTests(TestCase):
 
     def test_two_past_questions(self):
         """
-        The questions index page may display multiple questions.
+        La página de índice de preguntas puede mostrar múltiples preguntas.
         """
         question1 = create_question(question_text="Past question 1.", days=-30)
         question2 = create_question(question_text="Past question 2.", days=-5)

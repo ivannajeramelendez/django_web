@@ -13,8 +13,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """
-        Return the last five published questions (not including those set to be
-        published in the future).
+        Devuelva las últimas cinco preguntas publicadas (sin incluir las establecidas para ser publicado en el futuro).
         """
         return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
@@ -24,7 +23,7 @@ class DetailView(generic.DetailView):
 
     def get_queryset(self):
         """
-        Excludes any questions that aren't published yet.
+        Excluye cualquier pregunta que aún no esté publicada.
         """
         return Question.objects.filter(pub_date__lte=timezone.now())
 
@@ -61,7 +60,7 @@ def vote(request, question_id):
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
-        # Redisplay the question voting form.
+        # Vuelva a mostrar el formulario de votación de preguntas.
         return render(request, 'polls/detail.html', {
             'question': question,
             'error_message': "You didn't select a choice.",
@@ -69,7 +68,7 @@ def vote(request, question_id):
     else:
         selected_choice.votes += 1
         selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
+        # Siempre devuelva un HttpResponseRedirect después de tratar con éxito
+        # con datos POST. Esto evita que los datos se publiquen dos veces si un
+        # usuario pulsa el botón Atrás.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
