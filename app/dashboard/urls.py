@@ -6,6 +6,7 @@ from . import views
 app_name = 'dashboard'
 urlpatterns = [
     path('', views.inicio, name='inicio'),
+    # path('perfil/', views.perfil, name='perfil'),
     # path('billing/', views.billing, name='billing'),
     # path('tables/', views.tables, name='tables'),
     # path('vr/', views.vr, name='vr'),

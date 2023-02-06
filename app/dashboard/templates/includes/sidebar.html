@@ -15,7 +15,7 @@
       </li>
       {% comment %} {% if current_user.is_user_apartados() %} {% endcomment %}
       <li class="nav-item">
-        <a class="nav-link {% block Apartados %}{% endblock %}" href="url_foraforo.aforo_club') }}">
+        <a class="nav-link {% block Apartados %}{% endblock %}" href="{% url 'aforo' %}">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-check text-lg opacity-10 text-dark{% block Apartados_boton %}{% endblock %}"></i>
           </div>

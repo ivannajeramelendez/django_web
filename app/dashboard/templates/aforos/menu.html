@@ -1,0 +1,311 @@
+{% extends 'layouts/base.html' %}
+{% block boton_navbar %}
+<a class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#modal_restablecer_password">
+    Restablecer Contraseña App Movil
+</a>
+{% endblock boton_navbar %}
+{% load static %}
+
+{% block content %}
+
+    <!-- TITULO -->
+  <div class="card-frame mb-3">
+    <div class="card-body" align="center">
+      <h4 class="text-gradient text-dark"><b>¡Bienvenido a tu Club!</b></h4>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="row justify-content-center">
+    <div class="col-md-10 mb-4">
+      <div class="card card-pricing">
+        {% comment %} {% if current_user.is_alpha_2() %} {% endcomment %}
+        <div class="card-header bg-gradient-info text-center pt-4 pb-5 position-relative">
+        {% comment %} {% elif current_user.is_alpha_3() %}
+        <div class="card-header bg-gradient-alpha text-center pt-4 pb-5 position-relative">
+        {% elif current_user.is_alpha_4() %}
+        <div class="card-header bg-gradient-sp text-center pt-4 pb-5 position-relative">
+        {% elif current_user.is_cimera() %}
+        <div class="card-header bg-gradient-cimera text-center pt-4 pb-5 position-relative">
+        {% endif %} {% endcomment %}
+          <div class="z-index-1 position-relative">
+            <h5 class="text-white">Club</h5>
+            {% comment %} {% if current_user.is_user_logs() %} {% endcomment %}
+            <h1 class="mt-2 mb-0" style="color:rgb(255, 255, 255);">ACCESO POR CLUBS</h1>
+            {% comment %} {% elif current_user.is_alpha_2() %}
+            <h1 class="mt-2 mb-0" style="color:rgb(255, 255, 255);">CLUB ALPHA 2</h1>
+            {% elif current_user.is_alpha_3() %}
+            <h1 class="mt-2 mb-0" style="color:rgb(255, 255, 255);">CLUB ALPHA 3</h1>
+            {% elif current_user.is_alpha_4() %}
+            <h1 class="mt-2 mb-0" style="color:rgb(255, 255, 255);">SPORTS PLAZA</h1>
+            {% elif current_user.is_cimera() %}
+            <h1 class="mt-2 mb-0" style="color:rgb(255, 255, 255);">CIMERA</h1>
+            {% endif %} {% endcomment %}
+          </div>
+        </div>
+        <div class="position-relative mt-n5" style="height: 50px;">
+          <div class="position-absolute w-100">
+            <svg class="waves waves-sm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+              <defs>
+                <path id="card-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+              </defs>
+              {% comment %} {% if current_user.is_alpha_2() or current_user.is_alpha_3() %} {% endcomment %}
+              <g class="moving-waves">
+                <use xlink:href="#card-wave" x="48" y="-1" fill="rgba(10, 93, 193,0.30"></use>
+                <use xlink:href="#card-wave" x="48" y="3" fill="rgba(255,255,255,0.35)"></use>
+                <use xlink:href="#card-wave" x="48" y="5" fill="rgba(10, 93, 193,0.25)"></use>
+                <use xlink:href="#card-wave" x="48" y="8" fill="rgba(255,255,255,0.20)"></use>
+                <use xlink:href="#card-wave" x="48" y="13" fill="rgba(10, 93, 193,0.15)"></use>
+                <use xlink:href="#card-wave" x="48" y="16" fill="rgba(255,255,255,0.99)"></use>
+              </g>
+              {% comment %} {% elif current_user.is_alpha_4() %}
+              <g class="moving-waves">
+                <use xlink:href="#card-wave" x="48" y="-1" fill="rgba(111, 18, 229,0.30"></use>
+                <use xlink:href="#card-wave" x="48" y="3" fill="rgba(255,255,255,0.35)"></use>
+                <use xlink:href="#card-wave" x="48" y="5" fill="rgba(111, 18, 229,0.25)"></use>
+                <use xlink:href="#card-wave" x="48" y="8" fill="rgba(255,255,255,0.20)"></use>
+                <use xlink:href="#card-wave" x="48" y="13" fill="rgba(111, 18, 229,0.15)"></use>
+                <use xlink:href="#card-wave" x="48" y="16" fill="rgba(255,255,255,0.99)"></use>
+              </g>
+              {% elif current_user.is_cimera() %}
+              <g class="moving-waves">
+                <use xlink:href="#card-wave" x="48" y="-1" fill="rgba(193, 163, 10 ,0.30"></use>
+                <use xlink:href="#card-wave" x="48" y="3" fill="rgba(255,255,255,0.35)"></use>
+                <use xlink:href="#card-wave" x="48" y="5" fill="rgba(193, 163, 10 ,0.25)"></use>
+                <use xlink:href="#card-wave" x="48" y="8" fill="rgba(255,255,255,0.20)"></use>
+                <use xlink:href="#card-wave" x="48" y="13" fill="rgba(193, 163, 10 ,0.15)"></use>
+                <use xlink:href="#card-wave" x="48" y="16" fill="rgba(255,255,255,0.99)"></use>
+              </g>
+              {% endif %} {% endcomment %}
+            </svg>
+          </div>
+        </div>
+        <div class="card-body text-center">
+          {% comment %} {% if current_user.is_alpha_2() or current_user.is_user_logs() %} {% endcomment %}
+          <div class="input-group mb-3">
+            <a href="url_for('aforo.aforo_inicio_club_alpha_2')}}" class="btn bg-gradient-info w-50 mt-4 mb-0 text-white">
+              POR SEMANA ALPHA 2
+            </a>
+            <button type="button" class="btn btn-sm bg-gradient-info w-50 mt-4 mb-0 text-white" data-bs-toggle="modal" data-bs-target="#modal_a2">
+              POR DÍA ALPHA 2
+            </button>
+          </div>
+          {% comment %} {% endif %}
+          {% if current_user.is_alpha_3() or current_user.is_user_logs() %} {% endcomment %}
+          <div class="input-group mb-3">
+            <a href="url_for('aforo.aforo_inicio_club_alpha_3')}}" class="btn bg-gradient-info w-50 mt-4 mb-0 text-white">
+              POR SEMANA ALPHA 3
+            </a>
+            <button type="button" class="btn btn-sm bg-gradient-info w-50 mt-4 mb-0 text-white" data-bs-toggle="modal" data-bs-target="#modal_a3">
+              POR DÍA ALPHA 3
+            </button>
+          </div>
+          {% comment %} {% endif %}
+          {% if current_user.is_alpha_4() or current_user.is_user_logs() %} {% endcomment %}
+          <div class="input-group mb-3">
+            <a href="url_for('aforo.aforo_inicio_sport_plaza')}}" class="btn bg-gradient-primary w-50 mt-4 mb-0 text-white" >
+              POR SEMANA SPORTS PLAZA
+            </a>
+            <button type="button" class="btn btn-sm bg-gradient-primary w-50 mt-4 mb-0 text-white" data-bs-toggle="modal" data-bs-target="#modal_sp">
+              POR DÍA ALPHA SPORTS PLAZA
+            </button>
+          </div>
+          {% comment %} {% endif %}
+          {% if current_user.is_cimera() or current_user.is_user_logs() %} {% endcomment %}
+          <div class="input-group mb-3">
+            <a href="url_for('aforo.aforo_inicio_cimera')}}" class="btn bg-gradient-warning w-50 mt-4 mb-0 text-white">
+              POR SEMANA CIMERA
+            </a>
+            <button type="button" class="btn btn-sm bg-gradient-warning w-50 mt-4 mb-0 text-white" data-bs-toggle="modal" data-bs-target="#modal_cim">
+              POR DÍA CIMERA
+            </button>
+          </div>
+          {% comment %} {% endif %}
+          {% if current_user.is_user_gerente() or current_user.is_user_subgerente() or current_user.is_user_aux() %} {% endcomment %}
+          <div class="input-group mb-3">
+            <button type="button" class="btn btn-sm bg-gradient-secondary w-100 mt-4 mb-0 text-white" data-bs-toggle="modal" data-bs-target="#modal_health_studio">
+              HEALTH STUDIO
+            </button>
+          </div>
+          {% comment %} {% endif %} {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CLUB ALPHA 2 -->
+  <div class="modal fade" id="modal_a2">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="card card-plain">
+            <div class="card-header pb-0 text-left">
+                <h3 class="font-weight-bolder text-dark">Selecciona la fecha</h3>
+                <p class="mb-0">Visualiza los horarios por día</p>
+            </div>
+            <div class="card-body pb-3">
+              <form method="post" action="url_for('aforo.aforo_inicio_club_alpha_2_dia_sala')}}"> 
+                <div class="form-group mb-3">
+                  <label>Fecha: </label>
+                  <input class="form-control" type="text" name="dia_salas" value="dia" hidden>
+                  <input class="form-control" type="date" name="Fecha_Inicio" id="datePicker_a2" required>
+                  <script>
+                    document.getElementById('datePicker_a2').valueAsDate = new Date();
+                  </script>
+                </div>
+                <button class="btn btn-sm btn-info btn-lg w-100">Consultar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CLUB ALPHA 3 -->
+  <div class="modal fade" id="modal_a3">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="card card-plain">
+            <div class="card-header pb-0 text-left">
+                <h3 class="font-weight-bolder text-info">Selecciona la fecha</h3>
+                <p class="mb-0">Visualiza los horarios por día</p>
+            </div>
+            <div class="card-body pb-3">
+              <form method="post" action="url_for('aforo.aforo_inicio_club_alpha_3_dia_sala')}}"> 
+                <div class="form-group mb-3">
+                  <label>Fecha: </label>
+                  <input class="form-control" type="text" name="dia_salas" value="dia" hidden>
+                  <input class="form-control " type="date" name="Fecha_Inicio" id="datePicker_a3" required>
+                  <script>
+                    document.getElementById('datePicker_a3').valueAsDate = new Date();
+                  </script>
+                </div>
+                <button class="btn btn-sm btn-info btn-lg w-100">Consultar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CIMERA -->
+  <div class="modal fade" id="modal_cim">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="card card-plain">
+            <div class="card-header pb-0 text-left">
+                <h3 class="font-weight-bolder text-club text-gradient">Selecciona la fecha</h3>
+                <p class="mb-0">Visualiza los horarios por día</p>
+            </div>
+            <div class="card-body pb-3">
+              <form method="post" action="url_for('aforo.aforo_inicio_cimera_dia_sala')}}"> 
+                <div class="form-group mb-3">
+                  <label>Fecha: </label>
+                  <input class="form-control" type="text" name="dia_salas" value="dia" hidden>
+                  <input class="form-control " type="date" name="Fecha_Inicio" id="datePicker_cim" required>
+                  <script>
+                    document.getElementById('datePicker_cim').valueAsDate = new Date();
+                  </script>
+                </div>
+                <button class="btn btn-sm btn-warning btn-lg w-100">Consultar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL HEALTH STUDIO -->
+  <div class="modal fade" id="modal_health_studio">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="card card-plain">
+            <div class="card-header pb-0 text-left">
+                <h3 class="font-weight-bolder text-light">Selecciona la fecha</h3>
+                <p class="mb-0">Visualiza los horarios por día de HEALTH STUDIO</p>
+            </div>
+            <div class="card-body pb-3">
+              <form method="post" action="url_for('aforo.aforo_inicio_health_studio_dia_sala')}}"> 
+                <div class="form-group mb-3">
+                  <label>Fecha: </label>
+                  <input class="form-control" type="text" name="dia_salas" value="dia" hidden>
+                  <input class="form-control " type="date" name="Fecha_Inicio" id="datePicker_health_studio" required>
+                  <script>
+                    document.getElementById('datePicker_health_studio').valueAsDate = new Date();
+                  </script>
+                </div>
+                <button class="btn btn-sm btn-secondary btn-lg w-100">Consultar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL SPORTS PLAZA -->
+  <div class="modal fade" id="modal_sp">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="card card-plain">
+            <div class="card-header pb-0 text-left">
+                <h3 class="font-weight-bolder text-dark">Selecciona la fecha</h3>
+                <p class="mb-0">Visualiza los horarios por día</p>
+            </div>
+            <div class="card-body pb-3">
+              <form method="post" action="url_for('aforo.aforo_inicio_sport_plaza_dia_sala')}}"> 
+                <div class="form-group mb-3">
+                  <label>Fecha: </label>
+                  <input class="form-control" type="text" name="dia_salas" value="dia" hidden>
+                  <input class="form-control " type="date" name="Fecha_Inicio" id="datePicker_sp" required>
+                  <script>
+                    document.getElementById('datePicker_sp').valueAsDate = new Date();
+                  </script>
+                </div>
+                <button class="btn btn-sm btn-primary btn-lg w-100">Consultar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESTABLECER CONTRASEÑA -->
+  <div class="modal fade" id="modal_restablecer_password">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="card card-plain">
+            <div class="card-header pb-0 text-left">
+                <h3 class="font-weight-bolder text-dark text-gradient">Restablecer Contraseña App Movil</h3>
+                <p class="mb-0"><i>Puedes restablecer la Contraseña de la App Movil a su modo por defecto</i></p>
+                <p class="mb-0"><i>El Modo por defecto es: <b>ID.FECHA_DE_NACIMIENTO</b> (Ejemplo: 65123.19900229)</i></p>
+            </div>
+            <div class="card-body pb-3">
+              <form method="post" action="url_for('aforo.aforo_club')}}"> 
+                <div class="form-group mb-3">
+                  <label>SOLICITA: </label>
+                  <input type="text" class="form-control" value="{{current_user.nombre}}" name="usuario" readonly>
+                  <br>
+                  <label>ID CLIENTE: </label>
+                  <input class="form-control" type="text" name="restablecer" value="restablecer" hidden>
+                  <input class="form-control" type="number" name="ID_Cliente" placeholder="ID del Cliente" required>
+                </div>
+                <button class="btn btn-sm btn-primary btn-lg w-100">Restablecer</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

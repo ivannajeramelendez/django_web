@@ -14,6 +14,12 @@ from .forms import RegistrationForm, LoginForm, UserPasswordResetForm, UserSetPa
 def inicio(request):
   return render(request, 'pages/index.html', { 'segment': 'index' })
 
+def perfil(request):
+  return render(request, 'pages/profile.html', { 'segment': 'perfil' })
+
+def aforos(request):
+  return render(request, 'aforos/menu.html', { 'segment': 'aforos' })
+
 # def billing(request):
 #   return render(request, 'pages/billing.html', { 'segment': 'billing' })
 

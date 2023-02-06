@@ -17,7 +17,9 @@ from django.urls import path, include
 from dashboard import views
 
 urlpatterns = [
-    path('', views.inicio),
+    path('', views.inicio, name='inicio'),
+    path('perfil/', views.perfil, name='perfil'),
+    path('aforos/', views.aforos, name='aforo'),
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
 ]
