@@ -1,0 +1,413 @@
+{% load static %}
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+  <div class="sidenav-header" align="center">
+    {% comment %} <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i> {% endcomment %}
+    <a class="navbar-brand m-0" href="{% url 'admin:index' %}">
+      <img src="{% static 'img/logo-ct-dark.png' %}" class="navbar-brand-img h-100" alt="main_logo">
+      {% comment %} <span class="ms-1 font-weight-bold">Soft UI Dashboard</span> {% endcomment %}
+    </a>
+  </div>
+  <hr class="horizontal dark mt-0">
+  <div class="collapse navbar-collapse  w-auto h-auto h-100 ps" id="sidenav-collapse-main">
+    <ul class="navbar-nav">
+      <li class="nav-item mt-0">
+        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Menu</h6>
+      </li>
+      {% comment %} {% if current_user.is_user_apartados() %} {% endcomment %}
+      <li class="nav-item">
+        <a class="nav-link {% block Apartados %}{% endblock %}" href="url_foraforo.aforo_club') }}">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-check text-lg opacity-10 text-dark{% block Apartados_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-2">Aforos</span>
+        </a>
+      </li>
+      {% comment %} {% endif %}
+      {% if current_user.username == 'admin' %} {% endcomment %}
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#complex" class="nav-link {% block Complex %}{% endblock %}" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-band-aid my-3 text-lg opacity-10 text-dark{% block Complex_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-1">Complex Band</span>
+        </a>
+        <div class="collapse" id="complex">
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forcomplex.complex_asignacion') }}">
+                <span class="text-gradient text-dark">Asignación de Banda</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forcomplex.complex_tipos_de_reto')}}">
+                <span class="text-gradient text-dark">Tipos de Retos</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forcomplex.complex_crear_reto')}}">
+                <span class="text-gradient text-dark">Crear Retos</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      {% comment %} {% endif %}
+      {% if current_user.is_user_qr_pases() %} {% endcomment %}
+      <li class="nav-item">
+        <a class="nav-link {% block QR %}{% endblock %}" href="url_forqr.qr_busqueda') }}">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-qrcode my-3 text-lg opacity-10 text-dark{% block QR_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-1">QR</span>
+        </a>
+      </li>
+      {% comment %} {% endif %}
+      {% if current_user.is_user_registro() %} {% endcomment %}
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#registro" class="nav-link {% block Registro %}{% endblock %}" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-users  my-3 text-lg opacity-10 text-dark{% block Registro_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-1">Registro Usuarios</span>
+        </a>
+        <div class="collapse" id="registro">
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forregistro.registro_consulta') }}">
+                <span class="text-gradient text-dark">Consultar Usuarios</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      {% comment %} {% endif %}
+      {% if current_user.is_user_gerente() or current_user.is_user_aux() or current_user.is_user_subgerente() %} {% endcomment %}
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#clientes" class="nav-link {% block Clientes %}{% endblock %}" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-user-friends my-3 text-lg opacity-10 text-dark{% block Clientes_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-1">Clientes</span>
+        </a>
+        <div class="collapse" id="clientes">
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="url_foracceso.acceso_busqueda') }}">
+                <span class="text-gradient text-dark">Estatus del Cliente</span>
+              </a>
+            </li>
+            <li class="nav-item active" hidden>
+              <a class="nav-link" href="url_foracceso.acceso_estado_de_cuenta')}}">
+                <span class="text-gradient text-dark">Estado de Cuenta</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      {% comment %} {% endif %}
+      {% if current_user.is_user_toallas() %} {% endcomment %}
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#toallas" class="nav-link {% block Toallas %}{% endblock %}" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-scroll my-3 text-lg opacity-10 text-dark{% block Toallas_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-1">Toallas</span>
+        </a>
+        <div class="collapse" id="toallas">
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="url_fortoallas.toallas_acceso_cliente') }}">
+                <span class="text-gradient text-dark">Asignación Usuarios</span>
+              </a>
+            </li>
+          </ul>
+          {% comment %} {% if current_user.is_user_gerente() or current_user.is_user_subgerente() %} {% endcomment %}
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="url_fortoallas.toalla_reporte_menu') }}">
+                <span class="text-gradient text-dark">Reporte de Asignación</span>
+              </a>
+            </li>
+          </ul>
+          {% comment %} {% endif %} {% endcomment %}
+        </div>
+      </li>
+      {% comment %} {% endif %}
+      {% if current_user.is_user_configuracion() %} {% endcomment %}
+      <li class="nav-item">
+        <a class="nav-link {% block Configuracion %}{% endblock %}" href="url_forconfiguracion.configuracion_menu') }}">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-cogs my-3 text-lg opacity-10 text-dark{% block Configuracion_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-1">Clases Config.</span>
+        </a>
+      </li>
+      {% comment %} {% endif %}
+      {% if current_user.is_user_domiciliacion() %} {% endcomment %}
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#dom" class="nav-link {% block Domiciliacion %}{% endblock %}" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-university my-3 text-lg opacity-10 text-dark{% block Domiciliacion_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-1">Domiciliación</span>
+        </a>
+        <div class="collapse" id="dom">
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="url_fordomiciliacion.domiciliacion_inicio') }}">
+                <span class="text-gradient text-dark">Cobro por Domiciliacion</span>
+              </a>
+            </li>
+          </ul>
+          {% comment %} {% if current_user.is_user_am() %} {% endcomment %}
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="url_fordomiciliacion.domiciliacion_reporte_menu') }}">
+                <span class="text-gradient text-dark">Reporte de Domiciliacion</span>
+              </a>
+            </li>
+          </ul>
+          {% comment %} {% endif %} {% endcomment %}
+        </div>
+      </li>
+      {% comment %} {% endif %}
+      {% if current_user.is_user_pagos() %} {% endcomment %}
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#pagos" class="nav-link {% block Pagos %}{% endblock %}" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-money-bill-wave text-lg opacity-10 text-dark{% block Pagos_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-1">Pagos</span>
+        </a>
+        <div class="collapse" id="pagos">
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forpagos.pagos_busqueda') }}">
+                <span class="text-gradient text-dark">Referencia Oxxo</span>
+              </a>
+            </li>
+            {% comment %} {% if current_user.is_admin() %} {% endcomment %}
+            <!-- <li class="nav-item active">
+              <a class="nav-link" href="url_forpagos.pagos_busqueda_openpay') }}">
+                <span class="text-gradient text-club">Referencia Openpay</span>
+              </a>
+            </li> -->
+            {% comment %} {% endif %} {% endcomment %}
+          </ul>
+        </div>
+      </li>
+      {% comment %} {% endif %}
+      {% if current_user.is_user_parking()%} {% endcomment %}
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#parking" class="nav-link {% block Parking %}{% endblock %}" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-car my-3 text-lg opacity-10 text-dark{% block Parking_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-1">Parking</span>
+        </a>
+        <div class="collapse" id="parking">
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forparking.parking_registro_vehiculo') }}">
+                <span class="text-gradient text-dark">Registrar Cliente</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forparking.parking_registro_vehiculo_empleados') }}">
+                <span class="text-gradient text-dark">Registrar Empleado</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forparking.parking_update_vehiculo') }}">
+                <span class="text-gradient text-dark">Actualizar Datos</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forparking.parking_reporte_usuario') }}">
+                <span class="text-gradient text-dark">Reporte de Usuario</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forparking.parking_consulta_vehiculo') }}">
+                <span class="text-gradient text-dark">Consultar Vehiculo</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forparking.parking_consulta_chip') }}">
+                <span class="text-gradient text-dark">Chips Tag Activos</span>
+              </a>
+            </li>
+            {% comment %} {% if current_user.is_user_gerente() or  current_user.is_user_subgerente() %} {% endcomment %}
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forcaseta.caseta_consulta_chip') }}">
+                <span class="text-gradient text-dark">Corte de Ingresos QR</span>
+              </a>
+            </li>
+            {% comment %} {% endif %}
+            {% if current_user.username == 'admin' or current_user.username == 'ricardo.montiel' or current_user.username == 'luis.osvaldo' %} {% endcomment %}
+            <li class="nav-item active">
+              <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#ordersExample">
+                <span class="text-gradient text-danger">T.I</span>
+              </a>
+            </li>
+            <div class="collapse" id="ordersExample">
+              <li class="nav-item active">
+                <a class="nav-link" href="url_forparking.parking_update_chip') }}">
+                  <span class="text-gradient text-danger">Cambiar N° ChipTag</span>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="url_forparking.parking_activar_chip') }}">
+                  <span class="text-gradient text-danger">Activar ChipTag</span>
+                </a>
+              </li>
+              {% comment %} {% if current_user.username == 'admin'%} {% endcomment %}
+              <li class="nav-item active">
+                <a class="nav-link" href="url_forparking.parking_delete_chip') }}">
+                  <span class="text-gradient text-danger">Eliminar ChipTag</span>
+                </a>
+              </li>
+              {% comment %} {% endif %} {% endcomment %}
+            </div>
+            {% comment %} {% endif %} {% endcomment %}
+          </ul>
+        </div>
+      </li>
+      {% comment %} {% endif %}
+      {% if current_user.is_user_rh() or current_user.is_user_rh_consulta() %} {% endcomment %}
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#rh" class="nav-link {% block Rh %}{% endblock %}" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-user-tie my-3 text-lg opacity-10 text-dark{% block Rh_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-1">Recursos Humanos</span>
+        </a>
+        <div class="collapse" id="rh">
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forrh.rh_consulta') }}">
+                <span class="text-gradient text-dark">Consultar Vacaciones</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forrh.rh_consulta_cumpleaños') }}">
+                <span class="text-gradient text-dark">Cumpleaños Empleados</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      {% comment %} {% endif %}
+      {% if current_user.is_user_caseta() %} {% endcomment %}
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#caseta" class="nav-link {% block Caseta %}{% endblock %}" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-parking my-3 text-lg opacity-10 text-dark{% block Caseta_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-1">Caseta</span>
+        </a>
+        <div class="collapse" id="caseta">
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forcaseta.caseta_registro_qr') }}">
+                <span class="text-gradient text-dark">Registrar Ingreso</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      {% comment %} {% endif %}
+      {% if current_user.is_user_reportes() %} {% endcomment %}
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#reportes" class="nav-link {% block Reportes %}{% endblock %}" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-chart-pie my-3 text-lg opacity-10 text-dark{% block Reportes_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-1">Reportes</span>
+        </a>
+        <div class="collapse" id="reportes">
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forreportes.reportes_club') }}">
+                <span class="text-gradient text-dark">Reportes de Club</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="url_forreportes.reportes_especiales_menu')}}">
+                <span class="text-gradient text-dark">Reportes Especiales</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      {% comment %} {% endif %}
+      {% if current_user.is_user_rutinas() %} {% endcomment %}
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#rutinas" class="nav-link {% block Rutinas %}{% endblock %}" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center ">
+            <i class="fas fa-dumbbell my-3 text-lg opacity-10 text-dark{% block Rutinas_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-1">Asesor</span>
+        </a>
+        <div class="collapse" id="rutinas">
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active" >
+              <a class="nav-link" href="url_forrutinas.rutinas_chat')}}">
+                <span class="text-gradient text-dark">Chat Asesor</span>
+              </a>
+            </li>
+            <li class="nav-item active" >
+              <a class="nav-link" href="url_forrutinas.rutinas_agenda')}}">
+                <span class="text-gradient text-dark">Agenda</span>
+              </a>
+            </li>
+            <li class="nav-item active" >
+              <a class="nav-link" href="url_forrutinas.rutinas_asignar_rutina_img')}}">
+                <span class="text-gradient text-dark">Rutinas</span>
+              </a>
+            </li>
+            <li class="nav-item active" >
+              <a class="nav-link" href="url_forrutinas.rutinas_ejercicios_img')}}">
+                <span class="text-gradient text-dark">Rutinas Prediseñadas</span>
+              </a>
+            </li>
+            <li class="nav-item active" >
+              <a class="nav-link" href="url_forrutinas.rutinas_ejercicios_busqueda')}}">
+                <span class="text-gradient text-dark">Ejercicios Busqueda</span>
+              </a>
+            <li class="nav-item active" >
+              <a class="nav-link" href="url_forrutinas.rutinas_formularios')}}">
+                <span class="text-gradient text-dark">Formularios</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      {% comment %} {% endif %}
+      {% if current_user.is_user_facturas() %} {% endcomment %}
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#factura" class="nav-link {% block Factura %}{% endblock %}" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center ">
+            <i class="fa fa-check-double my-3 text-lg opacity-10 text-dark{% block Factura_boton %}{% endblock %}"></i>
+          </div>
+          <span class="nav-link-text ms-1">Factura</span>
+        </a>
+        <div class="collapse" id="factura">
+          <ul class="nav ms-4 ps-3">
+            <li class="nav-item active" >
+              <a class="nav-link" href="url_forfactura.factura_consulta')}}">
+                <span class="text-gradient text-dark">Consulta</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      {% comment %} {% endif %} {% endcomment %}
+    </ul>
+    {% if request.user.is_authenticated and not request.user.is_superuser %}{% endif %}
+  </div>
+</aside>

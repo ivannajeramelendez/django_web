@@ -13,8 +13,11 @@ Configuración de la URL de la aplicación
 """
 from django.contrib import admin
 from django.urls import path, include
+# SERVICIOS
+from dashboard import views
 
 urlpatterns = [
+    path('', views.inicio),
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
 ]

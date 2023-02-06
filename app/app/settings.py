@@ -9,9 +9,9 @@ SECRET_KEY = 'django-insecure-@0^5o^qp^4c@o3-9!z6ubp#pj0tw=p#t0qw*r3+oy-o9!4re8z
 DEBUG = True
 ALLOWED_HOSTS = []
 
-
 # Application definition
 INSTALLED_APPS = [
+    'dashboard',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,7 +51,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
-
 # Database
 DATABASES = {
     'default': {
@@ -81,7 +80,6 @@ LANGUAGE_CODE = 'es-mx'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
